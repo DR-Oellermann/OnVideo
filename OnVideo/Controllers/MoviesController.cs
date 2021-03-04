@@ -21,7 +21,15 @@ namespace OnVideo.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var movie = new List<Movie>
+            {
+                new Movie{ Name = "Movie 1"},
+                new Movie{ Name = "Movie 2"}
+            };
+
+            //var movie = new Movie() { Name = "Shrek" };
+
+            return View(movie);
         }
 
         //public ActionResult ByReleaseDate(int year, int month)
