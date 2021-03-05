@@ -179,11 +179,52 @@
     <Compile Include="Migrations\202103040845446_InitialModel.Designer.cs">
       <DependentUpon>202103040845446_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103050707081_AddBoolNewsleterCustomer.cs" />
+    <Compile Include="Migrations\202103050707081_AddBoolNewsleterCustomer.Designer.cs">
+      <DependentUpon>202103050707081_AddBoolNewsleterCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103050711597_AddedMembershipType.cs" />
+    <Compile Include="Migrations\202103050711597_AddedMembershipType.Designer.cs">
+      <DependentUpon>202103050711597_AddedMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103050713556_populateMembershipTypes.cs" />
+    <Compile Include="Migrations\202103050713556_populateMembershipTypes.Designer.cs">
+      <DependentUpon>202103050713556_populateMembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103050807355_FixedCustomerModel.cs" />
+    <Compile Include="Migrations\202103050807355_FixedCustomerModel.Designer.cs">
+      <DependentUpon>202103050807355_FixedCustomerModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103050808192_FixedCustomerModel1.cs" />
+    <Compile Include="Migrations\202103050808192_FixedCustomerModel1.Designer.cs">
+      <DependentUpon>202103050808192_FixedCustomerModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103050809159_FixedCustomerModel2.cs" />
+    <Compile Include="Migrations\202103050809159_FixedCustomerModel2.Designer.cs">
+      <DependentUpon>202103050809159_FixedCustomerModel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103050812234_addmembership.cs" />
+    <Compile Include="Migrations\202103050812234_addmembership.Designer.cs">
+      <DependentUpon>202103050812234_addmembership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103050813588_addmembershipRename.cs" />
+    <Compile Include="Migrations\202103050813588_addmembershipRename.Designer.cs">
+      <DependentUpon>202103050813588_addmembershipRename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103050816299_applyannotationstocustomer.cs" />
+    <Compile Include="Migrations\202103050816299_applyannotationstocustomer.Designer.cs">
+      <DependentUpon>202103050816299_applyannotationstocustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103050836127_AddMembershipName.cs" />
+    <Compile Include="Migrations\202103050836127_AddMembershipName.Designer.cs">
+      <DependentUpon>202103050836127_AddMembershipName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -270,6 +311,36 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202103040845446_InitialModel.resx">
       <DependentUpon>202103040845446_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050707081_AddBoolNewsleterCustomer.resx">
+      <DependentUpon>202103050707081_AddBoolNewsleterCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050711597_AddedMembershipType.resx">
+      <DependentUpon>202103050711597_AddedMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050713556_populateMembershipTypes.resx">
+      <DependentUpon>202103050713556_populateMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050807355_FixedCustomerModel.resx">
+      <DependentUpon>202103050807355_FixedCustomerModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050808192_FixedCustomerModel1.resx">
+      <DependentUpon>202103050808192_FixedCustomerModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050809159_FixedCustomerModel2.resx">
+      <DependentUpon>202103050809159_FixedCustomerModel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050812234_addmembership.resx">
+      <DependentUpon>202103050812234_addmembership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050813588_addmembershipRename.resx">
+      <DependentUpon>202103050813588_addmembershipRename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050816299_applyannotationstocustomer.resx">
+      <DependentUpon>202103050816299_applyannotationstocustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103050836127_AddMembershipName.resx">
+      <DependentUpon>202103050836127_AddMembershipName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
