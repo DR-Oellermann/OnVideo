@@ -52,9 +52,13 @@ namespace OnVideo.Controllers
             return View(viewModel);
         }
 
-        //public ActionResult Create()
-        //{
-        //    return ();
-        //}
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+
+            return ();
+        }
     }
 }
