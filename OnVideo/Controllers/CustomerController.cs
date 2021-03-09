@@ -42,7 +42,15 @@ namespace OnVideo.Controllers
 
         public ActionResult New()
         {
+            var membershipTypes = _context.MembershipTypes.ToList();
+
+
             return View();
         }
+
+        //public ActionResult Create()
+        //{
+        //    return ();
+        //}
     }
 }
