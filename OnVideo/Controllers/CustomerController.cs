@@ -44,12 +44,12 @@ namespace OnVideo.Controllers
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
-            var viewModel = new NewCustomer
+            var viewModel = new CustomerFormViewModel
             {
                 MembershipTypes = membershipTypes
             };
 
-            return View(viewModel);
+            return View("CustomerForm", viewModel);
         }
 
         [HttpPost]
@@ -58,7 +58,25 @@ namespace OnVideo.Controllers
             _context.Customers.Add(customer);
             _context.SaveChanges();
 
-            return ();
+            return RedirectToAction("Index", "Customer");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList(),
+            };
+
+            return View("CustomerForm", viewModel);
         }
     }
 }

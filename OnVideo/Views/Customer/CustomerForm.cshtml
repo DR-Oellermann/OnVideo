@@ -1,4 +1,4 @@
-﻿@model OnVideo.ViewModels.NewCustomer
+﻿@model OnVideo.ViewModels.CustomerFormViewModel
 
 @{
     ViewBag.Title = "New";
@@ -7,7 +7,7 @@
 
 <h2>new Customer</h2>
 
-@using (Html.BeginForm("Create", "Custoemr"))
+@using (Html.BeginForm("Create", "Customer"))
 {
     <div class="form-group">
         @Html.LabelFor(m => m.Customer.Name)
@@ -15,17 +15,18 @@
     </div>
     <div class="form-group">
         <label for="Birthdate"> Date of birth</label>
-        @Html.TextBoxFor(m => m.Customer.Birthdate, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Customer.Birthdate, "{0:d MMM yyy}", new { @class = "form-control" })
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "MembershipName"), "Select Membership", new { @class = "form-control" })
+    </div>
+
     <div class="checkbox">
         <label>
             @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribe to Newsletter?
         </label>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m=>m.Customer.MembershipTypeId)
-        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "MembershipName"), "Select Membership", new { @class = "form-control" })
     </div>
 
     <button type="submit" class="btn btn-primary">Add Customer</button>
