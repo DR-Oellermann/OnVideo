@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using OnVideo.Models;
+using OnVideo.ViewModels;
 
 namespace OnVideo.Controllers
 {
@@ -43,9 +44,12 @@ namespace OnVideo.Controllers
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new NewCustomer
+            {
+                MembershipTypes = membershipTypes
+            };
 
-
-            return View();
+            return View(viewModel);
         }
 
         //public ActionResult Create()
