@@ -41,6 +41,7 @@ namespace OnVideo.Controllers
             return View(customer);
         }
 
+        //Used to add new customer
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
@@ -52,6 +53,7 @@ namespace OnVideo.Controllers
             return View("CustomerForm", viewModel);
         }
 
+        //gets post data of new OR edited customer
         [HttpPost]
         public ActionResult Save(Customer customer)
         {
@@ -76,6 +78,7 @@ namespace OnVideo.Controllers
             return RedirectToAction("Index", "Customer");
         }
 
+        //Redirect to edit view and pre-populate all required fields with vcurrent db values
         public ActionResult Edit(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
