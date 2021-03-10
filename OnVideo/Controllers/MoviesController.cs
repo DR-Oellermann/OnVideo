@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -90,6 +92,7 @@ namespace OnVideo.Controllers
         {
             if (movie.Id == 0)
             {
+                movie.DateAdded = DateTime.Now;
                 _context.Movies.Add(movie);
             }
             else
@@ -102,6 +105,7 @@ namespace OnVideo.Controllers
             }
 
             _context.SaveChanges();
+
             return RedirectToAction("Index", "Movies");
         }
 
