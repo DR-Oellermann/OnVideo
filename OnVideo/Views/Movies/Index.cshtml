@@ -7,8 +7,9 @@
 
 <h2>Movies</h2>
 
-<button class="btn btn-primary" onclick="window.location.href('@Url.Action("NewMovie","Movies")')">Add Movie</button>
-
+<p>
+    @Html.ActionLink("New Movie", "NewMovie", "Movies", null, new { @class = "btn btn-primary" })
+</p>
 <table class="table table-bordered table-hover">
     <thead>
     <tr>

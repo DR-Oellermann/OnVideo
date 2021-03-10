@@ -88,7 +88,21 @@ namespace OnVideo.Controllers
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
-            return RedirectToAction("Index");
+            if (movie.Id == 0)
+            {
+                _context.Movies.Add(movie);
+            }
+            else
+            {
+                var moviesInDb = _context.Movies.Single(x => x.Id == movie.Id);
+                moviesInDb.Name = movie.Name;
+                moviesInDb.DateReleased = movie.DateReleased;
+                moviesInDb.NumberInStock = movie.NumberInStock;
+                moviesInDb.GenreId = movie.GenreId;
+            }
+
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Movies");
         }
 
         //public ActionResult ByReleaseDate(int year, int month)
