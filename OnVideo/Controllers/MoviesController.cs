@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnVideo.Models;
+using OnVideo.ViewModels;
 
 namespace OnVideo.Controllers
 {
@@ -52,6 +53,23 @@ namespace OnVideo.Controllers
             }
             return View(details);
 
+        }
+
+        public ActionResult NewMovie()
+        {
+            var genreTypes = _context.GenreTypes.ToList();
+            var viewModel = new MoviesFormViewModel()
+            {
+                Genres = genreTypes
+            };
+
+            return View("MoviesForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            return RedirectToAction("Index");
         }
 
         //public ActionResult ByReleaseDate(int year, int month)
