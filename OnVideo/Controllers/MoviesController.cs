@@ -66,6 +66,25 @@ namespace OnVideo.Controllers
             return View("MoviesForm", viewModel);
         }
 
+        public ActionResult EditMovie(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(x => x.Id == id);
+
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new MoviesFormViewModel
+            {
+                Movie = movie,
+                Genres = _context.GenreTypes.ToList()
+            };
+
+            return View("MoviesForm", viewModel);
+
+        }
+
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
