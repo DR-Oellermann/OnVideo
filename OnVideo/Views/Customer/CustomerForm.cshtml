@@ -5,10 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Movie</h2>
+<h2>New Customer</h2>
 
 @using (Html.BeginForm("Save", "Customer"))
 {
+    @Html.ValidationSummary()
+
     <div class="form-group">
         @Html.LabelFor(m => m.Customer.Name)
         @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
