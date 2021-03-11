@@ -12,7 +12,7 @@ namespace OnVideo.Models
         {
             var customer = (Customer) validationContext.ObjectInstance;
 
-            if (customer.MembershipTypeId == 1)
+            if (customer.MembershipTypeId == 0 || customer.MembershipTypeId == 1)
             {
                 return ValidationResult.Success;
             }
@@ -26,7 +26,7 @@ namespace OnVideo.Models
 
             return (age >= 18)
                 ? ValidationResult.Success
-                : new ValidationResult("Customer should be at least 18 years old!");
+                : new ValidationResult("Customer should be at least 18 years old to get a membership!");
         }
     }
 }
