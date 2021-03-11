@@ -9,7 +9,7 @@
 
 @using (Html.BeginForm("Save", "Customer"))
 {
-    @Html.ValidationSummary()
+    @Html.ValidationSummary(true, "Please fix the below errors:")
 
     <div class="form-group">
         @Html.LabelFor(m => m.Customer.Name)
