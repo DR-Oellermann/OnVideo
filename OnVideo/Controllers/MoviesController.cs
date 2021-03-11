@@ -77,9 +77,8 @@ namespace OnVideo.Controllers
                 return HttpNotFound();
             }
 
-            var viewModel = new MoviesFormViewModel
+            var viewModel = new MoviesFormViewModel(movie)
             {
-                Movie = movie,
                 Genres = _context.GenreTypes.ToList()
             };
 
@@ -93,9 +92,8 @@ namespace OnVideo.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new MoviesFormViewModel
+                var viewModel = new MoviesFormViewModel(movie)
                 {
-                    Movie = movie,
                     Genres = _context.GenreTypes.ToList()
                 };
 
