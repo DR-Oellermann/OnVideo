@@ -56,6 +56,7 @@ namespace OnVideo.Controllers
 
         //gets post data of new OR edited customer
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
