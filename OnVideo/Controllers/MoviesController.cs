@@ -88,8 +88,20 @@ namespace OnVideo.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new MoviesFormViewModel
+                {
+                    Movie = movie,
+                    Genres = _context.GenreTypes.ToList()
+                };
+
+                return View("MoviesForm", viewModel);
+            }
+
             if (movie.Id == 0)
             {
                 movie.DateAdded = DateTime.Now;
