@@ -37,11 +37,11 @@ namespace OnVideo.Controllers.Api
 
         //POST/api/customers
         [HttpPost]
-        public CustomerDto CreateCustomer(CustomerDto customerDto)
+        public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             }
 
             var cusstomer = Mapper.Map<CustomerDto, Customer>(customerDto);
@@ -50,7 +50,7 @@ namespace OnVideo.Controllers.Api
 
                 customerDto.Id = cusstomer.Id;
 
-                return customerDto;
+                return Created(new Uri(Request.RequestUri + "/" + cusstomer.Id), customerDto);
         }
 
         //PUT/API/Customers/1

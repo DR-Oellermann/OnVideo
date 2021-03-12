@@ -19,7 +19,7 @@ namespace OnVideo.Dtos
 
         public byte MembershipTypeId { get; set; }
 
-        [Min18YearsIsAMember]
+        //[Min18YearsIsAMember]
         public DateTime? Birthdate { get; set; }
     }
 }
