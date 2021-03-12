@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using AutoMapper;
+using OnVideo.Dtos;
 using OnVideo.Models;
 
 namespace OnVideo.Controllers.Api
@@ -17,63 +19,65 @@ namespace OnVideo.Controllers.Api
             _context = new ApplicationDbContext();
         }
         //GET/api/customers
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<CustomerDto> GetCustomers()
         {
-            return _context.Customers.ToList();
+            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
         }
 
         //GET/api/Customers/1
-        public Customer GetCustomer(int id)
+        public CustomerDto GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(x => x.Id == id);
 
             if (customer == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            return customer;
+            return Mapper.Map<Customer, CustomerDto>(customer);
         }
 
         //POST/api/customers
         [HttpPost]
-        public Customer CreateCustomer(Customer customer)
+        public CustomerDto CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            else
-            {
-                _context.Customers.Add(customer);
-                _context.SaveChanges();
-            }
 
-            return customer;
+            var cusstomer = Mapper.Map<CustomerDto, Customer>(customerDto);
+                _context.Customers.Add(cusstomer);
+                _context.SaveChanges();
+
+                customerDto.Id = cusstomer.Id;
+
+                return customerDto;
         }
 
         //PUT/API/Customers/1
         [HttpPut]
-        public void UpdateCustoemr(int id, Customer customer)
+        public void UpdateCustomer(int id, CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            else
+            
+            var customerInDb = _context.Customers.SingleOrDefault(x => x.Id == id);
+
+            if (customerInDb == null)
             {
-                var customerInDb = _context.Customers.SingleOrDefault(x => x.Id == id);
-
-                if (customerInDb == null)
-                {
-                    throw new HttpResponseException(HttpStatusCode.NotFound);
-                }
-
-                customerInDb.Name = customer.Name;
-                customerInDb.Birthdate = customer.Birthdate;
-                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
-                customerInDb.MembershipTypeId = customer.MembershipTypeId;
-
-                _context.SaveChanges();
+                throw new HttpResponseException(HttpStatusCode.NotFound);
             }
+
+            Mapper.Map(customerDto, customerInDb);
+
+            customerInDb.Name = customerDto.Name;
+            customerInDb.Birthdate = customerDto.Birthdate;
+            customerInDb.IsSubscribedToNewsletter = customerDto.IsSubscribedToNewsletter;
+            customerInDb.MembershipTypeId = customerDto.MembershipTypeId;
+
+            _context.SaveChanges();
+            
         }
 
         //Delete/api/Customers/1
