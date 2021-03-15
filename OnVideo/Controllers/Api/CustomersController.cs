@@ -7,6 +7,7 @@ using System.Web.Http;
 using AutoMapper;
 using OnVideo.Dtos;
 using OnVideo.Models;
+using System.Data.Entity;
 
 namespace OnVideo.Controllers.Api
 {
@@ -18,11 +19,18 @@ namespace OnVideo.Controllers.Api
         {
             _context = new ApplicationDbContext();
         }
+
         //GET/api/customers
-        public IEnumerable<CustomerDto> GetCustomers()
+        public IHttpActionResult GetCustomers()
         {
-            return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
+            var customerDtos = _context.Customers
+                .Include(c => c.MembershipType)
+                .ToList()
+                .Select(Mapper.Map<Customer, CustomerDto>);
+
+            return Ok(customerDtos);
         }
+
 
         //GET/api/Customers/1
         public IHttpActionResult GetCustomer(int id)

@@ -189,6 +189,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
+    <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -264,6 +265,10 @@
     <Compile Include="Migrations\202103111053444_latestchanges.cs" />
     <Compile Include="Migrations\202103111053444_latestchanges.Designer.cs">
       <DependentUpon>202103111053444_latestchanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103150909089_newChanges.cs" />
+    <Compile Include="Migrations\202103150909089_newChanges.Designer.cs">
+      <DependentUpon>202103150909089_newChanges.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -589,6 +594,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103111053444_latestchanges.resx">
       <DependentUpon>202103111053444_latestchanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103150909089_newChanges.resx">
+      <DependentUpon>202103150909089_newChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
