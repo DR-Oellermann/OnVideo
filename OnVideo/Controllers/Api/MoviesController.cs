@@ -8,6 +8,8 @@ using System.Web.UI;
 using AutoMapper;
 using OnVideo.Dtos;
 using OnVideo.Models;
+using System.Data.Entity;
+using Vidly.Dtos;
 
 namespace OnVideo.Controllers.Api
 {
@@ -23,7 +25,10 @@ namespace OnVideo.Controllers.Api
         //GET /api/movies
         public IEnumerable<MovieDto> GetMovies()
         {
-            return _context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
+            return _context.Movies
+                .Include(m => m.Genre)
+                .ToList()
+                .Select(Mapper.Map<Movie, MovieDto>);
         }
 
         //GET /api/movies/1
@@ -69,7 +74,7 @@ namespace OnVideo.Controllers.Api
 
             moviesInDb.Name = movieDto.Name;
             moviesInDb.NumberInStock = movieDto.NumberInStock;
-            moviesInDb.DateReleased = movieDto.DateReleased;
+            moviesInDb.DateReleased = movieDto.ReleaseDate;
             moviesInDb.DateAdded = movieDto.DateAdded;
             moviesInDb.GenreId = movieDto.GenreId;
 

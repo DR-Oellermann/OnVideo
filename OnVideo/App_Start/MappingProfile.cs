@@ -5,6 +5,7 @@ using System.Web;
 using AutoMapper;
 using OnVideo.Dtos;
 using OnVideo.Models;
+using Vidly.Dtos;
 
 namespace OnVideo.App_Start
 {
@@ -16,7 +17,7 @@ namespace OnVideo.App_Start
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<Movie, MovieDto>();
             Mapper.CreateMap<MembershipType, MembershipTypeDto>();
-            //Mapper.CreateMap<Genre, GenreDto>();
+            Mapper.CreateMap<Genre, GenreDto>();
 
 
             // Dto to Domain

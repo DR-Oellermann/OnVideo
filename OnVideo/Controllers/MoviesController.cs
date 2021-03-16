@@ -35,13 +35,9 @@ namespace OnVideo.Controllers
 
         }
 
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            var movie = _context.Movies.Include(m => m.Genre).ToList();
-
-            //var movie = new Movie() { Name = "Shrek" };
-
-            return View(movie);
+            return View();
         }
 
         public ActionResult Details(int id)
