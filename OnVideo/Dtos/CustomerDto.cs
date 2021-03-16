@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using OnVideo.Models;
 
-namespace OnVideo.Dtos
+namespace Vidly.Dtos
 {
     public class CustomerDto
     {
@@ -16,9 +12,9 @@ namespace OnVideo.Dtos
         public string Name { get; set; }
 
         public bool IsSubscribedToNewsletter { get; set; }
-        
+
         public byte MembershipTypeId { get; set; }
-        
+
         public MembershipTypeDto MembershipType { get; set; }
 
         public DateTime? Birthdate { get; set; }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace OnVideo.Dtos
+namespace Vidly.Dtos
 {
     public class MembershipTypeDto
     {

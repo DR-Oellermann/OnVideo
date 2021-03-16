@@ -5,9 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
-using OnVideo.Dtos;
 using OnVideo.Models;
 using System.Data.Entity;
+using Vidly.Dtos;
 
 namespace OnVideo.Controllers.Api
 {
@@ -21,14 +21,12 @@ namespace OnVideo.Controllers.Api
         }
 
         //GET/api/customers
-        public IHttpActionResult GetCustomers()
+        public IEnumerable<CustomerDto> GetMovies()
         {
-            var customerDtos = _context.Customers
-                .Include(c => c.MembershipType)
+            return _context.Customers
+                .Include(m => m.MembershipType)
                 .ToList()
                 .Select(Mapper.Map<Customer, CustomerDto>);
-
-            return Ok(customerDtos);
         }
 
 

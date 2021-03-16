@@ -18,7 +18,7 @@ namespace Vidly.Dtos
 
         public DateTime DateAdded { get; set; }
 
-        public DateTime ReleaseDate { get; set; }
+        public DateTime DateReleased { get; set; }
 
         [Range(1, 20)]
         public byte NumberInStock { get; set; }

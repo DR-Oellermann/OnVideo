@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using AutoMapper;
-using OnVideo.Dtos;
 using OnVideo.Models;
 using Vidly.Dtos;
 

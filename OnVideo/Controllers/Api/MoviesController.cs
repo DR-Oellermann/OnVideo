@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.UI;
 using AutoMapper;
-using OnVideo.Dtos;
 using OnVideo.Models;
 using System.Data.Entity;
 using Vidly.Dtos;
@@ -74,7 +73,7 @@ namespace OnVideo.Controllers.Api
 
             moviesInDb.Name = movieDto.Name;
             moviesInDb.NumberInStock = movieDto.NumberInStock;
-            moviesInDb.DateReleased = movieDto.ReleaseDate;
+            moviesInDb.DateReleased = movieDto.DateReleased;
             moviesInDb.DateAdded = movieDto.DateAdded;
             moviesInDb.GenreId = movieDto.GenreId;
 
