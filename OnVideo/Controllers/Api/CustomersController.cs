@@ -21,7 +21,7 @@ namespace OnVideo.Controllers.Api
         }
 
         //GET/api/customers
-        public IEnumerable<CustomerDto> GetMovies()
+        public IEnumerable<CustomerDto> GetCustomer()
         {
             return _context.Customers
                 .Include(m => m.MembershipType)
