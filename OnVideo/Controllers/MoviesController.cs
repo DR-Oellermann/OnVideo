@@ -37,7 +37,7 @@ namespace OnVideo.Controllers
 
         public ViewResult Index()
         {
-            if (User.IsInRole("CanManageMovie"))
+            if (User.IsInRole(RoleName.CanManageMovie))
                 return View("Index");
 
             return View("ReadOnlyList");
@@ -57,6 +57,7 @@ namespace OnVideo.Controllers
 
         }
 
+        [Authorize(Roles = RoleName.CanManageMovie)]
         public ActionResult NewMovie()
         {
             var genreTypes = _context.GenreTypes.ToList();
