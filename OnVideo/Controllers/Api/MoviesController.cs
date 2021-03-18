@@ -43,6 +43,8 @@ namespace OnVideo.Controllers.Api
 
         //POST /api/movies
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageMovie)]
+
         public IHttpActionResult CreateMovie(MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -59,6 +61,7 @@ namespace OnVideo.Controllers.Api
 
         //PUT api/movies/1
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManageMovie)]
         public void UpdateMovie(int id, MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -82,6 +85,7 @@ namespace OnVideo.Controllers.Api
 
         //DELETE /api/movies/1
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanManageMovie)]
         public void DeleteMovie(int id, MovieDto movieDto)
         {
             var moviesInDb = _context.Movies.SingleOrDefault(x => x.Id == id);

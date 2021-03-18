@@ -69,6 +69,7 @@ namespace OnVideo.Controllers
             return View("MoviesForm", viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovie)]
         public ActionResult EditMovie(int id)
         {
             var movie = _context.Movies.SingleOrDefault(x => x.Id == id);
@@ -89,6 +90,7 @@ namespace OnVideo.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageMovie)]
         public ActionResult Save(Movie movie)
         {
             if (!ModelState.IsValid)
