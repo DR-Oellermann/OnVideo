@@ -37,7 +37,11 @@ namespace OnVideo.Controllers
 
         public ViewResult Index()
         {
-            return View();
+            if (User.IsInRole("CanManageMovie"))
+                return View("Index");
+
+            return View("ReadOnlyList");
+
         }
 
         public ActionResult Details(int id)
