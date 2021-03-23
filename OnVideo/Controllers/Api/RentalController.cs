@@ -22,14 +22,27 @@ namespace OnVideo.Controllers.Api
         [HttpPost]
         public IHttpActionResult CreateNewRental(NewRentalDto newRental)
         {
+
+            if (newRental.MovieIds.Count == 0)
+                return BadRequest("No movie ID's have been given!");
+
             var customer = _context.Customers
-                .Single(x => x.Id == newRental.CustomerId);
+                .SingleOrDefault(x => x.Id == newRental.CustomerId);
+
+            if (customer == null)
+                return BadRequest("Customer ID is not valid!");
 
             var movies = _context.Movies
-                .Where(x => newRental.MovieIds.Contains(x.Id));
+                .Where(x => newRental.MovieIds.Contains(x.Id)).ToList();
+
+            if (movies.Count != newRental.MovieIds.Count)
+                return BadRequest("One or more MovieId's are invalid!");
 
             foreach (var movie in movies)
             {
+                if (movie.NumberAvailable == 0)
+                    return BadRequest("Movie is not available!");
+
                 var rental = new Rental
                 {
                     Customer = customer,
@@ -37,6 +50,7 @@ namespace OnVideo.Controllers.Api
                     DateRented = DateTime.Now
                 };
 
+                --movie.NumberAvailable; 
                 _context.Rentals.Add(rental);
             }
 

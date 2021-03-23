@@ -313,6 +313,10 @@
     <Compile Include="Migrations\202103230914164_addedNumberAvailable.Designer.cs">
       <DependentUpon>202103230914164_addedNumberAvailable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103230915224_setdefaultvalue.cs" />
+    <Compile Include="Migrations\202103230915224_setdefaultvalue.Designer.cs">
+      <DependentUpon>202103230915224_setdefaultvalue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -661,6 +665,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103230914164_addedNumberAvailable.resx">
       <DependentUpon>202103230914164_addedNumberAvailable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103230915224_setdefaultvalue.resx">
+      <DependentUpon>202103230915224_setdefaultvalue.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
