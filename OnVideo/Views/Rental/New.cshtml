@@ -10,7 +10,7 @@
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
-            <input id="customer" type="text" value="" class="form-control" />
+            <input id="customer" required type="text" value="" class="form-control" />
         </div>
     </div>
     
@@ -30,6 +30,7 @@
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
             var vm = {
@@ -80,20 +81,23 @@
                 $("#movie").typeahead("val", "");
                 vm.movieIds.push(movie.id);
             });
-            $("#newRental").submit(function(e) {
-                e.preventDefault();
-                $.ajax({
-                        url: "/Api/Rental",
-                        method: "post",
-                        data: vm
-                    })
-                    .done(function() {
-                        toastr.success("Rentals Successfully recorded!");
-                    })
-                    .fail(function() {
-                        toastr.error("An unexpected error happened");
-                    });
+
+            $("#newRental").validate({
+                submitHandler: function() {
+                    $.ajax({
+                                url: "/Api/Rental",
+                                method: "post",
+                                data: vm
+                            })
+                            .done(function() {
+                                toastr.success("Rentals Successfully recorded!");
+                            })
+                            .fail(function() {
+                                toastr.error("An unexpected error happened");
+                            });
+                }
             });
+
         });
  </script>
 }
