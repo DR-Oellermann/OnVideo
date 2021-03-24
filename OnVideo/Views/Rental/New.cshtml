@@ -6,15 +6,19 @@
 
 <h2>New Rental</h2>
 
-<form>
+<form id ="newRental">
     <div class="form-group">
         <label>Customer</label>
-        <input id="customer" type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input id="customer" type="text" value="" class="form-control" />
+        </div>
     </div>
     
     <div class="form-group">
         <label>Movie</label>
-        <input id="movie" type="text" value="" class="form-control" />
+        <div class="tt-container">
+            <input id="movie" type="text" value="" class="form-control" />
+        </div>
     </div>
     
     <ul id="movies" class="list-group">
@@ -75,6 +79,20 @@
                 $("#movies").append("<li class='list-group-item'>" + movie.name + "</li>");
                 $("#movie").typeahead("val", "");
                 vm.movieIds.push(movie.id);
+            });
+            $("#newRental").submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                        url: "/Api/Rental",
+                        method: "post",
+                        data: vm
+                    })
+                    .done(function() {
+                        toastr.success("Rentals Successfully recorded!");
+                    })
+                    .fail(function() {
+                        toastr.error("An unexpected error happened");
+                    });
             });
         });
  </script>

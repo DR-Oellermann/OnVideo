@@ -22,12 +22,20 @@ namespace OnVideo.Controllers.Api
         }
 
         //GET /api/movies
-        public IEnumerable<MovieDto> GetMovies()
+        public IHttpActionResult GetMovies(string query = null)
         {
-            return _context.Movies
+            var movieQuery = _context.Movies
                 .Include(m => m.Genre)
+                .Where(x => x.NumberAvailable > 0);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                movieQuery = movieQuery.Where(x => x.Name.Contains(query));
+
+            var movieDto = movieQuery
                 .ToList()
                 .Select(Mapper.Map<Movie, MovieDto>);
+
+            return Ok(movieDto);
         }
 
         //GET /api/movies/1

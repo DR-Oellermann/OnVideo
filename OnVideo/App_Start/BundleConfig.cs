@@ -12,6 +12,7 @@ namespace OnVideo
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/bootbox.js",
+                        "~/Scripts/toastr.js",
                         "~/scripts/datatables/jquery.datatables.js",
                         "~/scripts/datatables/datatables.bootstrap.js",
                         "~/scripts/typeahead.bundle.js"));
@@ -28,6 +29,7 @@ namespace OnVideo
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/content/typeahead.css",
+                      "~/content/toastr.css",
                       "~/content/datatables/css/datatables.bootstrap.css"));
         }
     }
